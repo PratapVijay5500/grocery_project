@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="login" action="/login_validation" method="POST">
+            <h1 class="form__title">Login</h1>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username or email", name="email">
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password" name="password">
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="#" class="form__link">Forgot your password?</a>
+            </p>
+            <p class="form__text">
+                <a class="form__link" href="/register" id="linkCreateAccount">Don't have an account? Create account</a>
+            </p>
+        </form>
+        
+    </div>
+
+</body>

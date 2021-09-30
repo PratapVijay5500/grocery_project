@@ -1,0 +1,137 @@
+								<!--  %%  Manage Product Front End Html Page  %%  -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title> GSMS </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="csrf-token" content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700">
+	<link media="all" type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+	<link media="all" type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+	<link media="all" type="text/css" rel="stylesheet" href="'{{url_for('static', filename='css/sidebar-menu.css')}}">
+	<link media="all" type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+<style>
+
+	.icon-bar{
+	background-color:green;
+	}
+</style>
+
+</head>
+<body class="tooltips">
+	<div class="container">
+		<div class="header content rows-content-header">
+			<div class="navbar navbar-inverse" role="navigation">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                    <div class="container-fluid">
+					    <div class="collapse navbar-collapse" id="micon">
+						<ul class="nav navbar-nav">
+						  <li class="active"><a href="/">Home</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+						  <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+						</ul>
+						</div>
+                    </div>
+            </div>
+		</div>
+	<div class="right content-page">
+        <div class="body content rows scroll-y">
+            <div class="box-info full" id="taskFormContainer">
+                <h2>Manage Products</h2>
+					<div class="panel-body pt-0">
+						<div class="row mb-4">
+							<div class="col-sm-12">
+								<button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#productModal">
+									Add New Product
+								</button>
+							</div>
+						</div>
+						<table class="table table-bordered">
+							<thead>
+<!--							<th>Product Id</th>-->
+								<th>Product Id</th>
+								<th>Product Name</th>
+								<th>Unit</th>
+								<th>Price Per Unit</th>
+								<th style="width: 150px">Action</th>
+							</thead>
+								<tbody>
+								   {% for data in product %}
+								   <th>{{data.id}}</td>
+								   <th>{{data.name}}</td>
+								   <th>{{data.unit}}</td>
+								   <th>{{data.price_per_unit}}</td>
+								   <th><button class="table-bordered" type="button">Edit</button></th>
+                           {% endfor %}
+								</tbody>
+						</table>
+					</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade-scale" id="productModal" role="dialog" data-backdrop="static">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Product</h4>
+				</div>
+                <div class="modal-body">
+                    <form id="productForm">
+                        <input type="hidden" name="id" id="product_id" value="0">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group">
+										<label >Product Id</label>
+										<input class="form-control" placeholder="product id" name="id" id="id" type="text" value="">
+									</div>
+	<!--                                <div class="form-group">-->
+	<!--                                    <label >Product Id</label>-->
+	<!--                                    <input class="form-control" placeholder="Product Id" name="product id" id="product id" type="text">-->
+	<!--                                </div>-->
+											<div class="form-group">
+												<label >Product Name</label>
+												<input class="form-control" placeholder="Product Name" name="product_name" id="product_name" type="text" value="">
+											</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="form-group">
+										<label >Unit</label>
+										<select name="uoms" id="uoms" class="form-control">
+										</select>
+										</div>
+									</div>
+								<div class="col-sm-12">
+									<div class="form-group">
+										<label >Price Per Unit</label>
+										<input class="form-control" placeholder="Price Per Unit" name="price" id="price" type="text" value="">
+									</div>
+								</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveProduct">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<script src="{{url_for('static', filename='js/packages/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/custom/common.js')}}"></script>
+	<script src="{{url_for('static', filename='js/custom/manage-product.js')}}"></script>
+	<script src="{{url_for('static', filename='js/packages/bootstrap.min.js')}}"></script>
+	</div>
+</body>
+</html>
